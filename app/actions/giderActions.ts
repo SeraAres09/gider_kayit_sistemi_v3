@@ -40,7 +40,7 @@ export async function kaydetGider(giderData) {
       'Harcama Yeri': giderData.harcamaYeri,
       'Harcama Turu': giderData.harcamaTuru,
       Tutar: giderData.tutar,
-      'Harcamayi Yapan': giderData.harcamaYapan, 
+      'Harcamayi Yapan': giderData.harcamayiYapan, 
       Not: giderData.not,
       'Kayit Zamani': kayitZamani,
     })
