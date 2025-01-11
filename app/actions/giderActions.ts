@@ -34,13 +34,22 @@ export async function kaydetGider(giderData) {
 
     const kayitZamani = new Date().toISOString()
 
+    console.log('Adding row with data:', {
+      Tarih: giderData.tarih,
+      'Harcama Yeri': giderData.harcamaYeri,
+      'Harcama Turu': giderData.harcamaTuru,
+      Tutar: giderData.tutar,
+      'Harcamayı Yapan': giderData.harcamaYapan,
+      Not: giderData.not,
+      'Kayit Zamani': kayitZamani,
+    })
     console.log('Attempting to add row')
     await sheet.addRow({
       Tarih: giderData.tarih,
       'Harcama Yeri': giderData.harcamaYeri,
       'Harcama Turu': giderData.harcamaTuru,
       Tutar: giderData.tutar,
-      'Harcamayi Yapan': giderData.harcamayiYapan, 
+      'Harcamayı Yapan': giderData.harcamaYapan, 
       Not: giderData.not,
       'Kayit Zamani': kayitZamani,
     })
