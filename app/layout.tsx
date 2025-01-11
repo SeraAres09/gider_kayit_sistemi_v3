@@ -4,7 +4,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Gider Kayıt Uygulaması',
-  description: 'Küçük çaplı şirketler için gider kayıt uygulaması',
+  description: 'Sera Ares Gider Kayit Sitesi',
 }
 
 export default function RootLayout({
