@@ -39,7 +39,7 @@ export async function kaydetGider(giderData) {
       'Harcama Yeri': giderData.harcamaYeri,
       'Harcama Turu': giderData.harcamaTuru,
       Tutar: giderData.tutar,
-      'Harcamayı Yapan': giderData.harcamaYapan,
+      'Harcamayi Yapan': giderData.harcamaYapan,
       Not: giderData.not,
       'Kayit Zamani': kayitZamani,
     })
@@ -49,7 +49,7 @@ export async function kaydetGider(giderData) {
       'Harcama Yeri': giderData.harcamaYeri,
       'Harcama Turu': giderData.harcamaTuru,
       Tutar: giderData.tutar,
-      'Harcamayı Yapan': giderData.harcamaYapan, 
+      'Harcamayi Yapan': giderData.harcamaYapan,  // Fixed the column name here
       Not: giderData.not,
       'Kayit Zamani': kayitZamani,
     })
