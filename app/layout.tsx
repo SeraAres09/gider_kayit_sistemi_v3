@@ -1,10 +1,11 @@
+import './globals.css'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Gider Kayıt Uygulaması',
-  description: 'Sera Ares Gider Kayit Sitesi',
+  description: 'Küçük çaplı şirketler için gider kayıt uygulaması',
 }
 
 export default function RootLayout({
