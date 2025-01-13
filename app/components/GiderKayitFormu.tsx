@@ -8,7 +8,6 @@ import { Input } from './ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
 import { Textarea } from './ui/textarea'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
-import { LogOut } from 'lucide-react'
 
 const harcamaYerleri = ['Market', 'Yakıt', 'Gübre', 'Nalbur', 'Demirbaş', 'Diğer']
 const harcamaTurleri = ['Nakit', 'Havale', 'Kredi Kartı', 'Borç']
@@ -59,8 +58,8 @@ export default function GiderKayitFormu() {
   }
 
   return (
-    <div className="container mx-auto p-4 max-w-md">
-      <Card className="mb-6">
+    <div className="container mx-auto px-4 py-8 max-w-md">
+      <Card className="mb-8">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">Gider Kayıt Girişi</CardTitle>
         </CardHeader>
@@ -82,44 +81,38 @@ export default function GiderKayitFormu() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium">
+              <label htmlFor="harcamaYeri" className="text-sm font-medium">
                 Harcama Yeri
               </label>
               <Select
                 value={formData.harcamaYeri}
                 onValueChange={(value) => handleSelectChange(value, 'harcamaYeri')}
-                required
               >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Seçiniz" />
                 </SelectTrigger>
                 <SelectContent>
                   {harcamaYerleri.map(yer => (
-                    <SelectItem key={yer} value={yer}>
-                      {yer}
-                    </SelectItem>
+                    <SelectItem key={yer} value={yer}>{yer}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium">
+              <label htmlFor="harcamaTuru" className="text-sm font-medium">
                 Harcama Türü
               </label>
               <Select
                 value={formData.harcamaTuru}
                 onValueChange={(value) => handleSelectChange(value, 'harcamaTuru')}
-                required
               >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Seçiniz" />
                 </SelectTrigger>
                 <SelectContent>
                   {harcamaTurleri.map(tur => (
-                    <SelectItem key={tur} value={tur}>
-                      {tur}
-                    </SelectItem>
+                    <SelectItem key={tur} value={tur}>{tur}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -142,18 +135,22 @@ export default function GiderKayitFormu() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium">
+              <label htmlFor="harcamaYapan" className="text-sm font-medium">
                 Harcamayı Yapan
               </label>
-              <Input
-                type="text"
-                id="harcamaYapan"
-                name="harcamaYapan"
+              <Select
                 value={formData.harcamaYapan}
-                onChange={handleChange}
-                required
-                className="w-full"
-              />
+                onValueChange={(value) => handleSelectChange(value, 'harcamaYapan')}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Seçiniz" />
+                </SelectTrigger>
+                <SelectContent>
+                  {harcamaYapanlar.map(kisi => (
+                    <SelectItem key={kisi} value={kisi}>{kisi}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="space-y-2">
@@ -170,10 +167,7 @@ export default function GiderKayitFormu() {
               />
             </div>
 
-            <Button
-              type="submit"
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white"
-            >
+            <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white">
               Kaydet
             </Button>
           </form>
@@ -194,7 +188,6 @@ export default function GiderKayitFormu() {
                   <TableHead>Tür</TableHead>
                   <TableHead>Tutar</TableHead>
                   <TableHead>Kişi</TableHead>
-                  <TableHead>İşlem</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -205,7 +198,6 @@ export default function GiderKayitFormu() {
                     <TableCell>{kayit.harcamaTuru}</TableCell>
                     <TableCell>{kayit.tutar}</TableCell>
                     <TableCell>{kayit.harcamaYapan}</TableCell>
-                    <TableCell>-</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -213,23 +205,6 @@ export default function GiderKayitFormu() {
           </div>
         </CardContent>
       </Card>
-
-      <div className="mt-6 space-y-4">
-        <Button
-          className="w-full bg-green-500 hover:bg-green-600 text-white"
-          onClick={() => console.log('Gider Kayıtları')}
-        >
-          Gider Kayıtları
-        </Button>
-
-        <Button
-          className="w-full bg-red-500 hover:bg-red-600 text-white"
-          onClick={() => console.log('Çıkış Yap')}
-        >
-          <LogOut className="w-4 h-4 mr-2" />
-          Çıkış Yap
-        </Button>
-      </div>
     </div>
   )
 }
