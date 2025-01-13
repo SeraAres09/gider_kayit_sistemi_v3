@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 import { kaydetGider } from '../actions/giderActions'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Button } from './ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Input } from './ui/input'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
+import { Textarea } from './ui/textarea'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
+import { LogOut } from 'lucide-react'
 
 const harcamaYerleri = ['Market', 'Yakıt', 'Gübre', 'Nalbur', 'Demirbaş', 'Diğer']
 const harcamaTurleri = ['Nakit', 'Havale', 'Kredi Kartı', 'Borç']
@@ -58,164 +59,184 @@ export default function GiderKayitFormu() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
-      <Card>
+    <div className="container mx-auto p-4 max-w-md">
+      <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl text-center">Gider Kayıt Girişi</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">Gider Kayıt Girişi</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label htmlFor="tarih" className="text-sm font-medium">
-                  Tarih
-                </label>
-                <Input
-                  type="date"
-                  id="tarih"
-                  name="tarih"
-                  value={formData.tarih}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium">
-                  Harcama Yeri
-                </label>
-                <Select
-                  value={formData.harcamaYeri}
-                  onValueChange={(value) => handleSelectChange(value, 'harcamaYeri')}
-                  required
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Seçiniz" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {harcamaYerleri.map(yer => (
-                      <SelectItem key={yer} value={yer}>
-                        {yer}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium">
-                  Harcama Türü
-                </label>
-                <Select
-                  value={formData.harcamaTuru}
-                  onValueChange={(value) => handleSelectChange(value, 'harcamaTuru')}
-                  required
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Seçiniz" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {harcamaTurleri.map(tur => (
-                      <SelectItem key={tur} value={tur}>
-                        {tur}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <label htmlFor="tutar" className="text-sm font-medium">
-                  Tutar
-                </label>
-                <Input
-                  type="number"
-                  id="tutar"
-                  name="tutar"
-                  value={formData.tutar}
-                  onChange={handleChange}
-                  required
-                  placeholder="0.00"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium">
-                  Harcamayı Yapan
-                </label>
-                <Select
-                  value={formData.harcamaYapan}
-                  onValueChange={(value) => handleSelectChange(value, 'harcamaYapan')}
-                  required
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Seçiniz" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {harcamaYapanlar.map(kisi => (
-                      <SelectItem key={kisi} value={kisi}>
-                        {kisi}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2 md:col-span-2">
-                <label htmlFor="not" className="text-sm font-medium">
-                  Not
-                </label>
-                <Textarea
-                  id="not"
-                  name="not"
-                  value={formData.not}
-                  onChange={handleChange}
-                  placeholder="Açıklama ekleyin..."
-                  className="min-h-[100px]"
-                />
-              </div>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <label htmlFor="tarih" className="text-sm font-medium text-gray-700">
+                Tarih
+              </label>
+              <Input
+                type="date"
+                id="tarih"
+                name="tarih"
+                value={formData.tarih}
+                onChange={handleChange}
+                required
+                className="w-full"
+              />
             </div>
 
-            <div className="flex justify-center">
-              <Button type="submit" className="w-full md:w-1/3">
-                Kaydet
-              </Button>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">
+                Harcama Yeri
+              </label>
+              <Select
+                value={formData.harcamaYeri}
+                onValueChange={(value) => handleSelectChange(value, 'harcamaYeri')}
+                required
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Seçiniz" />
+                </SelectTrigger>
+                <SelectContent>
+                  {harcamaYerleri.map(yer => (
+                    <SelectItem key={yer} value={yer}>
+                      {yer}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">
+                Harcama Türü
+              </label>
+              <Select
+                value={formData.harcamaTuru}
+                onValueChange={(value) => handleSelectChange(value, 'harcamaTuru')}
+                required
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Seçiniz" />
+                </SelectTrigger>
+                <SelectContent>
+                  {harcamaTurleri.map(tur => (
+                    <SelectItem key={tur} value={tur}>
+                      {tur}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="tutar" className="text-sm font-medium text-gray-700">
+                Tutar
+              </label>
+              <Input
+                type="number"
+                id="tutar"
+                name="tutar"
+                value={formData.tutar}
+                onChange={handleChange}
+                required
+                placeholder="0.00"
+                className="w-full"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">
+                Harcamayı Yapan
+              </label>
+              <Select
+                value={formData.harcamaYapan}
+                onValueChange={(value) => handleSelectChange(value, 'harcamaYapan')}
+                required
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Seçiniz" />
+                </SelectTrigger>
+                <SelectContent>
+                  {harcamaYapanlar.map(kisi => (
+                    <SelectItem key={kisi} value={kisi}>
+                      {kisi}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="not" className="text-sm font-medium text-gray-700">
+                Not
+              </label>
+              <Textarea
+                id="not"
+                name="not"
+                value={formData.not}
+                onChange={handleChange}
+                placeholder="Açıklama ekleyin..."
+                className="min-h-[100px] w-full"
+              />
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md"
+            >
+              Kaydet
+            </Button>
           </form>
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="mt-6 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-xl">Son Kayıtlar</CardTitle>
+          <CardTitle className="text-xl font-bold">Bugünün Kayıtları</CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Tarih</TableHead>
-                <TableHead>Harcama Yeri</TableHead>
-                <TableHead>Harcama Türü</TableHead>
-                <TableHead>Tutar</TableHead>
-                <TableHead>Harcamayı Yapan</TableHead>
-                <TableHead>Not</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {kayitlar.map((kayit, index) => (
-                <TableRow key={index}>
-                  <TableCell>{kayit.tarih}</TableCell>
-                  <TableCell>{kayit.harcamaYeri}</TableCell>
-                  <TableCell>{kayit.harcamaTuru}</TableCell>
-                  <TableCell>{kayit.tutar}</TableCell>
-                  <TableCell>{kayit.harcamaYapan}</TableCell>
-                  <TableCell className="max-w-[200px] truncate">{kayit.not}</TableCell>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Tarih</TableHead>
+                  <TableHead>Yer</TableHead>
+                  <TableHead>Tür</TableHead>
+                  <TableHead>Tutar</TableHead>
+                  <TableHead>Kişi</TableHead>
+                  <TableHead>İşlem</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {kayitlar.map((kayit, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{kayit.tarih}</TableCell>
+                    <TableCell>{kayit.harcamaYeri}</TableCell>
+                    <TableCell>{kayit.harcamaTuru}</TableCell>
+                    <TableCell>{kayit.tutar}</TableCell>
+                    <TableCell>{kayit.harcamaYapan}</TableCell>
+                    <TableCell>-</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         </CardContent>
       </Card>
+
+      <div className="mt-6 space-y-4">
+        <Button
+          className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-md"
+          onClick={() => window.location.href = '/gider-kayitlari'}
+        >
+          Gider Kayıtları
+        </Button>
+        
+        <Button
+          className="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-md"
+          onClick={() => window.location.href = '/logout'}
+        >
+          <LogOut className="w-4 h-4 mr-2" />
+          Çıkış Yap
+        </Button>
+      </div>
     </div>
   )
 }
