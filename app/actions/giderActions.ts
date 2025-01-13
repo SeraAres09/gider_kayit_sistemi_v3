@@ -11,7 +11,16 @@ if (!SPREADSHEET_ID || !CLIENT_EMAIL || !PRIVATE_KEY) {
   throw new Error('Google Sheets credentials are missing')
 }
 
-export async function kaydetGider(giderData) {
+interface GiderData {
+  tarih: string;
+  harcamaYeri: string;
+  harcamaTuru: string;
+  tutar: string;
+  harcamaYapan: string;
+  not: string;
+}
+
+export async function kaydetGider(giderData: GiderData) {
   console.log('kaydetGider function called with data:', giderData)
   try {
     console.log('Creating JWT with:', { CLIENT_EMAIL, PRIVATE_KEY: PRIVATE_KEY?.substring(0, 20) + '...' })
@@ -49,7 +58,7 @@ export async function kaydetGider(giderData) {
       'Harcama Yeri': giderData.harcamaYeri,
       'Harcama Turu': giderData.harcamaTuru,
       Tutar: giderData.tutar,
-      'Harcamayi Yapan': giderData.harcamaYapan,  // Fixed the column name here
+      'Harcamayi Yapan': giderData.harcamaYapan,
       Not: giderData.not,
       'Kayit Zamani': kayitZamani,
     })
