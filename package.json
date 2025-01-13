@@ -21,7 +21,8 @@
     "tailwind-merge": "^1.14.0",
     "lucide-react": "^0.263.1",
     "tailwindcss-animate": "^1.0.7",
-    "supports-color": "^8.1.1"
+    "supports-color": "^8.1.1",
+    "encoding": "^0.1.13"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
