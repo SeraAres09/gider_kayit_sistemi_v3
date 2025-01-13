@@ -60,14 +60,14 @@ export default function GiderKayitFormu() {
 
   return (
     <div className="container mx-auto p-4 max-w-md">
-      <Card className="shadow-lg">
+      <Card className="mb-6">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">Gider Kayıt Girişi</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="tarih" className="text-sm font-medium text-gray-700">
+              <label htmlFor="tarih" className="text-sm font-medium">
                 Tarih
               </label>
               <Input
@@ -82,7 +82,7 @@ export default function GiderKayitFormu() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium">
                 Harcama Yeri
               </label>
               <Select
@@ -104,7 +104,7 @@ export default function GiderKayitFormu() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium">
                 Harcama Türü
               </label>
               <Select
@@ -126,7 +126,7 @@ export default function GiderKayitFormu() {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="tutar" className="text-sm font-medium text-gray-700">
+              <label htmlFor="tutar" className="text-sm font-medium">
                 Tutar
               </label>
               <Input
@@ -142,29 +142,22 @@ export default function GiderKayitFormu() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium">
                 Harcamayı Yapan
               </label>
-              <Select
+              <Input
+                type="text"
+                id="harcamaYapan"
+                name="harcamaYapan"
                 value={formData.harcamaYapan}
-                onValueChange={(value) => handleSelectChange(value, 'harcamaYapan')}
+                onChange={handleChange}
                 required
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Seçiniz" />
-                </SelectTrigger>
-                <SelectContent>
-                  {harcamaYapanlar.map(kisi => (
-                    <SelectItem key={kisi} value={kisi}>
-                      {kisi}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                className="w-full"
+              />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="not" className="text-sm font-medium text-gray-700">
+              <label htmlFor="not" className="text-sm font-medium">
                 Not
               </label>
               <Textarea
@@ -179,7 +172,7 @@ export default function GiderKayitFormu() {
 
             <Button
               type="submit"
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md"
+              className="w-full bg-blue-500 hover:bg-blue-600 text-white"
             >
               Kaydet
             </Button>
@@ -187,7 +180,7 @@ export default function GiderKayitFormu() {
         </CardContent>
       </Card>
 
-      <Card className="mt-6 shadow-lg">
+      <Card>
         <CardHeader>
           <CardTitle className="text-xl font-bold">Bugünün Kayıtları</CardTitle>
         </CardHeader>
@@ -223,15 +216,15 @@ export default function GiderKayitFormu() {
 
       <div className="mt-6 space-y-4">
         <Button
-          className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-md"
-          onClick={() => window.location.href = '/gider-kayitlari'}
+          className="w-full bg-green-500 hover:bg-green-600 text-white"
+          onClick={() => console.log('Gider Kayıtları')}
         >
           Gider Kayıtları
         </Button>
-        
+
         <Button
-          className="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-md"
-          onClick={() => window.location.href = '/logout'}
+          className="w-full bg-red-500 hover:bg-red-600 text-white"
+          onClick={() => console.log('Çıkış Yap')}
         >
           <LogOut className="w-4 h-4 mr-2" />
           Çıkış Yap
